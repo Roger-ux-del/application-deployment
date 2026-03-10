@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ensae-mlops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Roger-ux-del/application-deployment.git
+    targetRevision: main
+    path: application-deployment
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: roger27
+  syncPolicy:
+    automated:
+      selfHeal: true
